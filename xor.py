@@ -9,7 +9,7 @@ def sigmoidDash(x):
 	#Derivative of sigmoid function
 	#Activation function used in back propagation
 	#Derivation of sigmoid is given in the file Sigmoid_Derivation
-	return x*(1+x)
+	return x*(1-x)
 	
 #Given Data
 x = np.array(([0,0],[0,1],[1,0],[1,1])) 						#4x2 matrix
