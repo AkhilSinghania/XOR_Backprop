@@ -1,3 +1,4 @@
+
 import sys
 import numpy as np
 
@@ -28,7 +29,7 @@ for i in xrange(500000):
 	
 	#Forward propagation
 	layer1 = x 									#input layer
-	layer2 = sigmoid(np.dot(layer1,W1))	 					#4x4 matrix
+	layer2 = sigmoid(np.dot(layer1,W1))	 					#4x4 matrix, Hidden layer
 	layer3 = sigmoid(np.dot(layer2,W2)) 						#4x1 vector, Output layer
 	
 	#^In Forward propgation we first multiply the
@@ -45,12 +46,13 @@ for i in xrange(500000):
 	layer2_Delta = layer2_error*sigmoidDash(layer2) 				#4x4 matrix
 	
 	#^In Backward propgation we first use the derivative
+	#(Derivative - slope of the Activation Function)
 	#of activation function and then multiply the error
-	#of that particular layer. After that we multiply
-	#the Delta value with the weight of the synapses 
-	#to get the error in the previous layer. This goes 
-	#till the second layer as one cannot change the values
-	#of the input layer.
+	#of that particular layer to get a value Delta for 
+	#that particular layer. This Delta value is then 
+	#multiplied with the weight of the synapses to get 
+	#the error in the previous layer. This goes till the
+	#second layer as there is no error in the input layer.
 	
 	#Performing Gradient Descent To change the weights accordingly
 	W2 += layer2.T.dot(layer3_Delta) 						#4x1 vector
