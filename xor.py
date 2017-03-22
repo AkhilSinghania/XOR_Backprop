@@ -4,7 +4,7 @@ import numpy as np
 
 def sigmoid(x):
 	#Activation Function used in forward propagation
-	return 1/(1+exp(-x))
+	return 1/(1+np.exp(-x))
 	
 def sigmoidDash(x):
 	#Derivative of sigmoid function
@@ -25,7 +25,7 @@ np.random.seed(1)
 W1 = np.random.randn(2,4) 								#2x4 matrix
 W2 = np.random.randn(4,1) 								#4x1 vector
 
-for i in xrange(500000):
+for i in range(500000):
 	
 	#Forward propagation
 	layer1 = x 									#input layer
@@ -38,7 +38,7 @@ for i in xrange(500000):
 	#value for the node in next layer
 	
 	#Calculating Error
-	Layer3_error = y - layer3 							#4x1 vector
+	layer3_error = y - layer3 							#4x1 vector
 	
 	#Backward propagation
 	layer3_Delta = layer3_error*sigmoidDash(layer3) 				#4x1 vector
@@ -59,5 +59,5 @@ for i in xrange(500000):
 	W1 += layer1.T.dot(layer2_Delta) 						#2x4 matrix
 	
 #Printing the Output
-print "Output:"
-print layer3
+print ("Output:")
+print (layer3)
